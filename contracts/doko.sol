@@ -58,6 +58,13 @@ contract doko is
                 amount1Min : 0,
                 deadline : 1725230979
         }));
+        (amount0, amount1) = manager.collect(CollectParams({
+        tokenId : tokenId,
+        recipient : tokenPosition[tokenId].owner,
+        amount0Max : uint128(amount0),
+        amount1Max : uint128(amount1)
+        }));
+        tokenPosition[tokenId].liquidity = 0;
     }
 
     function withdraw(uint256 tokenId)   
